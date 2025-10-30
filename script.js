@@ -198,82 +198,10 @@ const revealOnScroll = () => {
 };
 window.addEventListener('scroll', revealOnScroll);
 revealOnScroll();
-/* ===== projects horizontal interactivity (append to script.js) ===== */
+/* ===== projects horizontal interactivity (consolidated) ===== */
 (function () {
-  const track = document.querySelector('.projects-track');
-  if (!track) return;
-
-  // Prev / Next nav
-  const prev = document.querySelector('.track-nav.prev');
-  const next = document.querySelector('.track-nav.next');
-
-  const scrollAmount = 360; // pixel amount per click
-
-  function updateNavDisabled() {
-    if (!prev || !next) return;
-    prev.disabled = track.scrollLeft <= 10;
-    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10;
-  }
-
-  prev?.addEventListener('click', () => { track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
-  next?.addEventListener('click', () => { track.scrollBy({ left: scrollAmount, behavior: 'smooth' }); });
-
-  // mouse drag to scroll
-  let isDown = false, startX, scrollLeftStart;
-  track.addEventListener('mousedown', (e) => {
-    isDown = true;
-    track.classList.add('dragging');
-    startX = e.pageX - track.offsetLeft;
-    scrollLeftStart = track.scrollLeft;
-  });
-  track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('dragging'); });
-  track.addEventListener('mouseup', () => { isDown = false; track.classList.remove('dragging'); });
-  track.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.2;
-    track.scrollLeft = scrollLeftStart - walk;
-    updateNavDisabled();
-  });
-
-  // touch events (mobile)
-  track.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].pageX - track.offsetLeft;
-    scrollLeftStart = track.scrollLeft;
-  });
-  track.addEventListener('touchmove', (e) => {
-    const x = e.touches[0].pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.2;
-    track.scrollLeft = scrollLeftStart - walk;
-  });
-
-  // keyboard arrows when focused
-  track.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    if (e.key === 'ArrowLeft') track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  });
-
-  // Intersection Observer — small reveal animation
-  const cards = track.querySelectorAll('.proj-card');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(en => {
-      if (en.isIntersecting) {
-        en.target.classList.add('is-visible');
-      }
-    });
-  }, { threshold: 0.3, root: track });
-
-  cards.forEach(c => obs.observe(c));
-
-  // update nav disabled state on scroll
-  track.addEventListener('scroll', updateNavDisabled);
-  window.addEventListener('resize', updateNavDisabled);
-  updateNavDisabled();
-})();
-/* ===== projects horizontal interactivity (images) ===== */
-(function () {
-  const track = document.querySelector('.projects-track');
+  // accept either class name used in markup
+  const track = document.querySelector('.projects-track') || document.querySelector('.carousel-track');
   if (!track) return;
 
   const prev = document.querySelector('.track-nav.prev');
@@ -286,59 +214,169 @@ revealOnScroll();
     next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10;
   }
 
-  prev?.addEventListener('click', () => { track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
-  next?.addEventListener('click', () => { track.scrollBy({ left: scrollAmount, behavior: 'smooth' }); });
+  prev?.addEventListener('click', () => track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
+  next?.addEventListener('click', () => track.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
 
-  // mouse drag for desktop
+  // drag to scroll (desktop)
   let isDown = false, startX = 0, scrollLeftStart = 0;
   track.addEventListener('mousedown', (e) => {
     isDown = true;
+    track.classList.add('dragging');
     startX = e.pageX - track.offsetLeft;
     scrollLeftStart = track.scrollLeft;
-    track.classList.add('dragging');
   });
   document.addEventListener('mouseup', () => { isDown = false; track.classList.remove('dragging'); });
+  track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('dragging'); });
   track.addEventListener('mousemove', (e) => {
     if (!isDown) return;
+    e.preventDefault();
     const x = e.pageX - track.offsetLeft;
     const walk = (x - startX) * 1.2;
     track.scrollLeft = scrollLeftStart - walk;
     updateNavDisabled();
   });
 
-  // touch events
+  // touch events (mobile) - passive where appropriate
   track.addEventListener('touchstart', (e) => {
     startX = e.touches[0].pageX - track.offsetLeft;
     scrollLeftStart = track.scrollLeft;
-  });
+  }, { passive: true });
   track.addEventListener('touchmove', (e) => {
     const x = e.touches[0].pageX - track.offsetLeft;
     const walk = (x - startX) * 1.2;
     track.scrollLeft = scrollLeftStart - walk;
-  });
+  }, { passive: true });
 
-  // keyboard support
+  // keyboard arrows when focused
   track.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     if (e.key === 'ArrowLeft') track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
   });
 
-  // reveal observer for subtle fade
-  const cards = track.querySelectorAll('.proj-card');
+  // Intersection Observer — allow both naming patterns and mark visible using 'show' (matches existing CSS)
+  const cards = track.querySelectorAll('.proj-card, .project-card');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(en => {
       if (en.isIntersecting) {
-        en.target.classList.add('is-visible');
+        // add the class the CSS expects for reveal
+        en.target.classList.add('show', 'is-visible');
       }
     });
-  }, { threshold: 0.35, root: track });
+  }, { threshold: 0.3, root: track });
 
   cards.forEach(c => obs.observe(c));
 
-  track.addEventListener('scroll', updateNavDisabled);
+  // efficient scroll handling
+  let raf = null;
+  track.addEventListener('scroll', () => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(updateNavDisabled);
+  });
+
   window.addEventListener('resize', updateNavDisabled);
   updateNavDisabled();
 })();
 
+/* ===== projects: infinite moving cards (transform-based, slower) ===== */
+(function () {
+  const track = document.querySelector('.carousel-track') || document.querySelector('.projects-track');
+  if (!track) return;
 
+  // avoid double-init
+  if (track.dataset.inited === '1') return;
+  track.dataset.inited = '1';
 
+  // create mover and transfer current children into it
+  const mover = document.createElement('div');
+  mover.className = 'carousel-mover';
+  const children = Array.from(track.children);
+  children.forEach(ch => mover.appendChild(ch));
+  track.appendChild(mover);
+
+  // duplicate children for seamless loop
+  const originalCount = mover.children.length;
+  for (let i = 0; i < originalCount; i++) {
+    mover.appendChild(mover.children[i].cloneNode(true));
+  }
+
+  // compute loop width as half of total mover width (original set width)
+  let setWidth = 0;
+  function updateSetWidth() {
+    // use scrollWidth because children widths + gaps are included
+    setWidth = mover.scrollWidth / 2 || 0;
+  }
+  // measure after layout
+  requestAnimationFrame(updateSetWidth);
+  window.addEventListener('resize', () => {
+    // debounce resize measurement
+    clearTimeout(window._moverMeasureTimer);
+    window._moverMeasureTimer = setTimeout(updateSetWidth, 120);
+  });
+
+  // animation state
+  let pos = 0; // current translateX (px)
+  let paused = false;
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartPos = 0;
+
+  // slower speed: px per ms (0.06 = ~60px/s)
+  const speed = 0.06;
+
+  function animate(time) {
+    if (!mover._lastTime) mover._lastTime = time;
+    const dt = time - mover._lastTime;
+    mover._lastTime = time;
+
+    if (!paused && !isDragging && setWidth > 0) {
+      pos -= speed * dt;
+      // loop when moved past one set width
+      if (Math.abs(pos) >= setWidth) {
+        pos += setWidth;
+      }
+      mover.style.transform = `translate3d(${pos}px,0,0)`;
+    }
+
+    mover._raf = requestAnimationFrame(animate);
+  }
+  mover._raf = requestAnimationFrame(animate);
+
+  // pause/resume on hover/focus
+  track.addEventListener('mouseenter', () => { paused = true; });
+  track.addEventListener('mouseleave', () => { paused = false; });
+  track.addEventListener('focusin', () => { paused = true; });
+  track.addEventListener('focusout', () => { paused = false; });
+
+  // pointer drag support on mover
+  mover.style.touchAction = 'none';
+  mover.addEventListener('pointerdown', (e) => {
+    isDragging = true;
+    paused = true;
+    mover.setPointerCapture?.(e.pointerId);
+    dragStartX = e.clientX;
+    dragStartPos = pos;
+  });
+  mover.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    const dx = e.clientX - dragStartX;
+    pos = dragStartPos + dx;
+    // normalize pos to prevent runaway values
+    if (setWidth && Math.abs(pos) >= setWidth) pos = ((pos % setWidth) + setWidth) % setWidth * (pos < 0 ? -1 : 1);
+    mover.style.transform = `translate3d(${pos}px,0,0)`;
+  });
+  mover.addEventListener('pointerup', (e) => {
+    isDragging = false;
+    paused = false;
+    try { mover.releasePointerCapture?.(e.pointerId); } catch (err) {}
+  });
+  mover.addEventListener('pointercancel', () => { isDragging = false; paused = false; });
+
+  // reveal cards with IntersectionObserver (existing CSS uses .show)
+  const cards = mover.querySelectorAll('.proj-card, .project-card');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) en.target.classList.add('show', 'is-visible');
+    });
+  }, { threshold: 0.25, root: track });
+  cards.forEach(c => obs.observe(c));
+})();
