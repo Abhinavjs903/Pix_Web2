@@ -1065,3 +1065,74 @@ body {
     align-items: center;
   }
 }
+
+/* remove top blank space */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* fix nav positioning */
+nav {
+  margin-top: 0;
+  padding-top: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* green nav links */
+nav a {
+  color: #00ff99;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #00ffaa;
+}
+
+/* contact us button */
+.contact-btn {
+  background: linear-gradient(90deg, #00ff99, #00cc66);
+  color: #000;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: linear-gradient(90deg, #00ffaa, #00dd77);
+}
+#preloader {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.loader h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #00ff99;
+  margin: 0;
+}
+
+.loader p {
+  color: #888;
+  font-size: 1rem;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
