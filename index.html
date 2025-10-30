@@ -122,38 +122,39 @@
     <p class="projects-sub">Every pixel has a story — wild visuals, motion & campaigns that actually convert.</p>
 
     <div class="projects-carousel">
-      <div class="carousel-track">
+      <!-- make track discoverable by script and focusable for keyboard -->
+      <div class="carousel-track projects-track" tabindex="0">
 
         <!-- CARD 1 -->
-        <div class="project-card">
+        <div class="project-card proj-card">
           <img src="https://i.ibb.co/nqBKVCBX/download-1.jpg" alt="Web Design" />
           <h3>Web Design</h3>
           <a href="https://drive.google.com/file/d/1A2B3C4D" target="_blank" class="view-btn">Unleash ⚡</a>
         </div>
 
         <!-- CARD 2 -->
-        <div class="project-card">
+        <div class="project-card proj-card">
           <img src="https://i.ibb.co/zVGDm5Mz/d.jpg" alt="Video Editing" />
           <h3>Video Editing</h3>
           <a href="https://drive.google.com/drive/folders/15krbRjZTGB1YKCshOkhkbggDkRRBHAIX?usp=drive_link" target="_blank" class="view-btn">Unleash ⚡</a>
         </div>
 
         <!-- CARD 3 -->
-        <div class="project-card">
+        <div class="project-card proj-card">
           <img src="https://i.ibb.co/b59W9V8D/download.jpg" alt="Social Media Creatives" />
           <h3>Social Media Creatives</h3>
           <a href="https://drive.google.com/drive/folders/1p88AYFzDpP3gAVPHvxY-ccD52KoftDu4?usp=drive_link" target="_blank" class="view-btn">Unleash ⚡</a>
         </div>
 
         <!-- CARD 4 -->
-        <div class="project-card">
+        <div class="project-card proj-card">
           <img src="https://i.ibb.co/GfK3D67M/download.png" alt="Branding" />
           <h3>Branding</h3>
           <a href="https://drive.google.com/drive/folders/1LhqROl496fhWvTdRX99D2QQ7OgFMFYHI?usp=drive_link" target="_blank" class="view-btn">Unleash ⚡</a>
         </div>
 
         <!-- DUPLICATES for infinite scroll -->
-        <div class="project-card">
+        <div class="project-card proj-card">
           <img src="https://i.ibb.co/nqBKVCBX/download-1.jpg" alt="Web Design" />
           <h3>Web Design</h3>
           <a href="https://drive.google.com/drive/folders/1dj2O6ZB2zIDJsoZCp1hQzKOKeC4BxBRW?usp=drive_link" target="_blank" class="view-btn">Unleash ⚡</a>
@@ -195,10 +196,13 @@
   position: relative;
 }
 
+/* IMPORTANT: remove animation so container stays fixed;
+   the cards mover (JS + .carousel-mover) will handle motion */
 .carousel-track {
-  display: flex;
+  display: block;
   gap: 2rem;
-  animation: scroll 25s linear infinite;
+  /* animation removed to keep container fixed */
+  /* animation: scroll 25s linear infinite; */
 }
 
 .project-card {
@@ -250,12 +254,6 @@
   background: linear-gradient(90deg, #ffcc00, #ff0066);
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
-}
-
-/* Infinite Scroll Animation */
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 /* Book a Call Button */
@@ -368,10 +366,6 @@ Reach out to us — let’s make your brand stand out online.</p>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
-
-</div>
-
+  
 </body>
 </html>
-
-
