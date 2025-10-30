@@ -759,3 +759,79 @@ body {
 }
 
 /* ...existing code... */
+
+/* Ensure no leftover animated gradient applies to nav items */
+/* ===== Visual tweak: clearer, aesthetic mint/teal for nav + header button =====
+   Targets anchor text inside .nav-item so links are visible (was being overridden). */
+.nav-list .nav-item a,
+#navList .nav-item a,
+.nav-links li a {
+  color: #18C48B !important;              /* pleasant mint/teal */
+  text-decoration: none !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  text-shadow: none !important;
+  transition: color .18s ease, transform .18s ease;
+  font-weight: 600;
+}
+
+/* li fallback (if you render text on the li) */
+.nav-list .nav-item,
+#navList .nav-item {
+  color: #18C48B !important;
+}
+
+/* hover / focus */
+.nav-list .nav-item a:hover,
+#navList .nav-item a:hover,
+.nav-links li a:hover,
+.nav-list .nav-item:focus,
+#navList .nav-item:focus,
+.nav-links li a:focus {
+  color: #69F6B1 !important;              /* lighter mint on hover */
+  transform: translateY(-2px) scale(1.03);
+  text-shadow: 0 0 8px rgba(105,246,177,0.16) !important;
+  outline: none;
+}
+
+/* active state */
+.nav-list .nav-item.active a,
+#navList .nav-item.active a,
+.nav-links a.active {
+  color: #A8FFDF !important;
+  text-shadow: 0 0 10px rgba(168,255,223,0.18) !important;
+  transform: translateY(-2px);
+  font-weight: 700;
+}
+
+/* Remove leftover nav-item text-clip/animation if present */
+.nav-item {
+  animation: none !important;
+  -webkit-text-fill-color: initial !important;
+}
+
+/* Header "Contact Us" button — matching mint gradient and good contrast */
+.btn.contact-top,
+#contactTop {
+  background: linear-gradient(90deg, #18C48B, #2DE59E) !important;
+  color: #042522 !important;               /* dark text for contrast on light mint */
+  border: none !important;
+  box-shadow: 0 8px 24px rgba(24,196,139,0.10);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.btn.contact-top:hover,
+#contactTop:hover {
+  background: linear-gradient(90deg, #2DE59E, #A8FFD9) !important;
+  transform: scale(1.06);
+  box-shadow: 0 12px 34px rgba(45,229,158,0.16);
+}
+
+/* Utility contact-btn if used elsewhere */
+.contact-btn {
+  background: #18C48B !important;
+  color: #042522 !important;
+  border: none !important;
+}
+.contact-btn:hover { background: #2DE59E !important; transform: translateY(-2px); }
