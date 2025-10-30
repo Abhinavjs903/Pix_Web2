@@ -339,3 +339,11 @@ revealOnScroll();
   window.addEventListener('resize', updateNavDisabled);
   updateNavDisabled();
 })();
+useEffect(() => {
+  const preloader = document.getElementById("preloader");
+  window.addEventListener("load", () => {
+    preloader.classList.add("fade-out");
+    setTimeout(() => (preloader.style.display = "none"), 500);
+  });
+}, []);
+
