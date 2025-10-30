@@ -1094,45 +1094,24 @@ nav a:hover {
   color: #00ffaa;
 }
 
-/* contact us button */
+/* CONTACT US BUTTON — Neon Green */
 .contact-btn {
-  background: linear-gradient(90deg, #00ff99, #00cc66);
-  color: #000;
+  background-color: #00ff99;         /* solid neon green */
+  color: #000;                       /* dark text for contrast */
   font-weight: 600;
   border-radius: 25px;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border: none;
   cursor: pointer;
-  transition: 0.3s ease;
+  box-shadow: 0 0 15px #00ff99;      /* glowing edge */
+  transition: all 0.3s ease;
 }
 
 .contact-btn:hover {
-  background: linear-gradient(90deg, #00ffaa, #00dd77);
+  background-color: #00ffaa;         /* lighter green on hover */
+  box-shadow: 0 0 25px #00ffaa;
+  transform: scale(1.05);            /* slight lift effect */
 }
-#preloader {
-  position: fixed;
-  inset: 0;
-  background-color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 9999;
-}
-
-.loader h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
-  color: #00ff99;
-  margin: 0;
-}
-
-.loader p {
-  color: #888;
-  font-size: 1rem;
-}
-
-.fade-out {
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
+.contact-btn {
+  text-shadow: 0 0 5px #003300;
 }
