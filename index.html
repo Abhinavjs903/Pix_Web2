@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pixelark — Creative Sparks</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="siteHeader">
+    <div class="header-inner">
+      <div class="brand">
+        <img class="brand-logo" src="https://i.ibb.co/MDBw7Prr/Screenshot-2025-10-20-173405.png" alt="Pixelark" />
+        <span class="brand-text">PIXELARK</span>
+      </div>
+
+      <nav id="siteNav" aria-label="Main navigation">
+        <ul id="navList" class="nav-list">
+          <li class="nav-item" data-target="home"><a href="#home">HOME</a></li>
+          <li class="nav-item" data-target="register"><a href="#register">REGISTER</a></li>
+          <li class="nav-item" data-target="projects"><a href="#our-projects">PROJECTS</a></li>
+          <li class="nav-item" data-target="team"><a href="#team">What we do</a></li>
+          <li class="nav-item" data-target="contact"><a href="#contact">CONTACT US</a></li>
+          <li class="nav-item" data-target="social"><a href="#social">SOCIAL</a></li>
+          <li class="nav-item" data-target="vision"><a href="#vision">VISION</a></li>
+        </ul>
+
+        <button id="contactTop" class="btn contact-top"
+  onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+  Contact Us
+</button>
+
+
+        <button id="hamburger" aria-expanded="false" aria-controls="navList" class="hamburger" title="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    
+    <!-- HOME -->
+    <section id="home" class="panel" data-theme="neo">
+      <div class="home-bg">
+        <div class="stars-container" id="homeStars"></div>
+        <div class="nebula">
+          <div class="nebula-cloud cloud-1"></div>
+          <div class="nebula-cloud cloud-2"></div>
+          <div class="nebula-cloud cloud-3"></div>
+          <div class="nebula-cloud cloud-4"></div>
+        </div>
+        <div class="grid-overlay"></div>
+        <div class="tech-lines"><div class="scan-line"></div></div>
+      </div>
+
+      <div class="panel-inner">
+        <div class="intro-wrap">
+          <img class="home-logo" src="https://i.ibb.co/MDBw7Prr/Screenshot-2025-10-20-173405.png" alt="Pixelark Logo">
+          <h1 class="tagline">⚡✨ EVERY BRAND NEEDS A SPARK — WE BRING LIGHTNING ⚡✨</h1>
+          <p class="lead">Creative websites, animated micro-interactions & brand motion — built for impact.</p>
+          <div class="intro-cta">
+            <button class="btn primary" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Get Started</button>
+            <a class="btn ghost" href="#our-projects">Our Work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGISTER -->
+    <section id="register" class="panel" data-theme="aurora">
+      <div class="section-bg"></div>
+      <div class="panel-inner">
+        <h2>GET IN TOUCH</h2>
+        <p class="register-line">We’d love to hear from you — choose how you’d like to connect!</p>
+
+        <div class="cards contact-cards">
+
+          <!-- CARD 1 -->
+          <div class="card viby-card">
+            <h3>📞 Call or Email Us</h3>
+            <p>Reach out to us directly — we love talking about your ideas and bringing them to life.</p>
+            <div class="btn-group">
+              <button class="btn neon-btn" onclick="window.location.href='tel:+917701926583'">Call +91 7701926583</button>
+              <button class="btn neon-btn" onclick="window.location.href='tel:+919254446294'">Call +91 92544 46294</button>
+              <button class="btn neon-btn" onclick="window.location.href='mailto:pixelark666@gmail.com'">Email Us</button>
+            </div>
+          </div>
+
+          <!-- CARD 2 -->
+          <div class="card viby-card">
+            <h3>💬 Chat with Us</h3>
+            <p>Quick responses? Drop a message on WhatsApp or DM us on Instagram — we’re super active there!</p>
+            <div class="btn-group">
+              <button class="btn neon-btn" onclick="window.open('https://wa.me/917701926583','_blank')">WhatsApp 1</button>
+              <button class="btn neon-btn" onclick="window.open('https://wa.me/919254446294','_blank')">WhatsApp 2</button>
+              <button class="btn neon-btn" onclick="window.open('https://www.instagram.com/pixelark_solutions','_blank')">Instagram</button>
+            </div>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="card viby-card">
+            <h3>📝 Share Your Idea</h3>
+            <p>Tell us what you dream — we’ll turn it into pixels that shine. Submit your details in our form.</p>
+            <div class="btn-group">
+              <button class="btn neon-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">✨ Open Form</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+<!-- ========== OUR PROJECTS (Auto-Scrolling Carousel) ========== -->
+<section id="our-projects" class="panel" data-theme="darkgrid" aria-label="Our Projects">
+  <div class="panel-inner text-center">
+    <h2 class="projects-title">Our Projects</h2>
+    <p class="projects-sub">Every pixel has a story — wild visuals, motion & campaigns that actually convert.</p>
+
+    <div class="projects-carousel">
+      <div class="carousel-track">
+
+        <!-- CARD 1 -->
+        <div class="project-card">
+          <img src="https://i.ibb.co/nqBKVCBX/download-1.jpg" alt="Web Design" />
+          <h3>Web Design</h3>
+          <a href="https://drive.google.com/file/d/1A2B3C4D" target="_blank" class="view-btn">Unleash ⚡</a>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="project-card">
+          <img src="https://i.ibb.co/zVGDm5Mz/d.jpg" alt="Video Editing" />
+          <h3>Video Editing</h3>
+          <a href="https://drive.google.com/drive/folders/15krbRjZTGB1YKCshOkhkbggDkRRBHAIX?usp=drive_link" target="_blank" class="view-btn">Unleash ⚡</a>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="project-card">
+          <img src="https://i.ibb.co/b59W9V8D/download.jpg" alt="Social Media Creatives" />
+          <h3>Social Media Creatives</h3>
+          <a href="https://drive.google.com/drive/folders/1p88AYFzDpP3gAVPHvxY-ccD52KoftDu4?usp=drive_link" target="_blank" class="view-btn">Unleash ⚡</a>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="project-card">
+          <img src="https://i.ibb.co/GfK3D67M/download.png" alt="Branding" />
+          <h3>Branding</h3>
+          <a href="https://drive.google.com/drive/folders/1LhqROl496fhWvTdRX99D2QQ7OgFMFYHI?usp=drive_link" target="_blank" class="view-btn">Unleash ⚡</a>
+        </div>
+
+        <!-- DUPLICATES for infinite scroll -->
+        <div class="project-card">
+          <img src="https://i.ibb.co/nqBKVCBX/download-1.jpg" alt="Web Design" />
+          <h3>Web Design</h3>
+          <a href="https://drive.google.com/drive/folders/1dj2O6ZB2zIDJsoZCp1hQzKOKeC4BxBRW?usp=drive_link" target="_blank" class="view-btn">Unleash ⚡</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Book a Call Button -->
+    <button class="book-call-btn" onclick="document.getElementById('register').scrollIntoView({ behavior: 'smooth' });">
+      Book a Call
+    </button>
+  </div>
+</section>
+
+<style>
+/* Section */
+#our-projects {
+  padding: 4rem 1rem;
+  background: #0a0a0a;
+  color: white;
+  overflow: hidden;
+}
+
+.projects-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.projects-sub {
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+/* Carousel */
+.projects-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2rem;
+  animation: scroll 25s linear infinite;
+}
+
+.project-card {
+  background: #111;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  min-width: 260px;
+  text-align: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 320px;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+}
+
+.project-card img {
+  width: 100%;
+  height: 170px;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.project-card h3 {
+  font-size: 1.1rem;
+  margin: 0.8rem 0 0.5rem;
+}
+
+/* Savage Button */
+.view-btn {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #ff0066, #ffcc00);
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 100, 0.4);
+}
+
+.view-btn:hover {
+  background: linear-gradient(90deg, #ffcc00, #ff0066);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+}
+
+/* Infinite Scroll Animation */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Book a Call Button */
+.book-call-btn {
+  margin-top: 3rem;
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.book-call-btn:hover {
+  background: #ff0066;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carousel-track {
+    gap: 1rem;
+    animation-duration: 35s;
+  }
+  .project-card {
+    min-width: 210px;
+    height: 300px;
+  }
+}
+</style>
+
+
+    <!-- TEAM -->
+    <section id="team" class="panel" data-theme="frost">
+      <div class="section-bg"></div>
+      <div class="panel-inner">
+        <h2>What We Do</h2>
+        <p>At Pixelark Solutions, we provide high-quality marketing, designing, and video editing services for small businesses and startups.
+Our skilled team of B.Tech students brings creativity and technical expertise to every project.
+Each task is handled step-by-step with precision and undergoes multiple quality checks before delivery.
+We also offer sample work to ensure complete satisfaction.
+
+Reach out to us — let’s make your brand stand out online.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="panel" data-theme="pastel">
+      <div class="section-bg"></div>
+      <div class="panel-inner">
+        <h2>CONTACT FORM</h2>
+        <p>Let's make something. Send a quick message.</p>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfX4QR_TX07iLgyCTiqB7luTiXI7jovqQgLpLGOdAmKJYIQAA/viewform?embedded=true" width="640" height="1282" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
+    </section>
+
+    <!-- SOCIAL -->
+    <section id="social" class="panel" data-theme="electric">
+      <div class="section-bg"></div>
+      <div class="panel-inner">
+        <h2>SOCIAL MEDIA</h2>
+        <p>Follow our creative journey and stay updated with Pixelark.</p>
+
+        <div class="social-list">
+          <a class="chip neon-social" href="https://www.instagram.com/pixelark_solutions" target="_blank">📸 Instagram</a>
+          <a class="chip neon-social" href="https://www.linkedin.com/company/pixelark-solutions/" target="_blank">💼 LinkedIn</a>
+          <a class="chip neon-social" href="mailto:pixelark666@gmail.com">✉️ Email Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISION -->
+   <section id="vision" class="panel" data-theme="cosmic">
+  <div class="section-bg"></div>
+  <div class="panel-inner text-center">
+    <h2 class="vision-title">OUR VISION</h2>
+    <p class="vision-sub">Building a future where creativity meets opportunity.</p>
+
+    <div class="vision-content">
+      <!-- Vision Part 1 -->
+      <div class="vision-card">
+        <h3>🌍 Empowering Small Businesses</h3>
+        <p>
+          At <strong>Pixelark Solutions</strong>, we help small businesses and startups build a powerful internet identity.
+          Our team of creative minds delivers <strong>high-quality marketing, designing, and video editing services</strong> — crafted with precision and multiple quality checks.
+          Every brand deserves to shine online, and we make sure it does.
+        </p>
+      </div>
+
+      <!-- Vision Part 2 -->
+      <div class="vision-card">
+        <h3>💡 Creating a Platform for Students</h3>
+        <p>
+          We’re a team of <strong>B.Tech students</strong> turning passion into purpose — helping brands while shaping our careers.
+          Through Pixelark, we’re building a <strong>freelancing platform</strong> that connects students with real-world projects,
+          converting <strong>skills into value</strong> and <strong>learning into opportunity</strong>.
+          It’s not just about money — it’s about growth, creativity, and contribution.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </main>
+
+  <div id="cursor" aria-hidden="true"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
