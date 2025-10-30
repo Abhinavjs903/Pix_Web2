@@ -660,481 +660,102 @@ body {
 #our-projects .projects-title { font-family: 'Orbitron', sans-serif; font-size: clamp(28px,4vw,40px); color: #ff0048; text-shadow: 0 0 12px rgba(255,0,72,0.18); margin-bottom: 8px; }
 #our-projects .projects-sub { color: rgba(230,244,255,0.75); margin-bottom: 22px; max-width:900px; margin-left:auto; margin-right:auto; }
 
-.projects-track-wrap { display:flex; align-items:center; gap:16px; position:relative; max-width:1200px; margin: 0 auto; }
-.track-nav { width:46px; height:46px; border-radius:10px; border:0; background:linear-gradient(90deg,#ff0048,#00ff88); color:#071226; font-size:24px; cursor:pointer; box-shadow:0 10px 30px rgba(0,0,0,0.45); transition:transform .18s; }
-.track-nav:active { transform:scale(.96); }
-.track-nav[disabled] { opacity:.35; pointer-events:none; transform:none; }
-
-.projects-track {
-  display:flex;
-  gap:18px;
-  overflow-x:auto;
-  padding:12px 6px;
-  scroll-behavior:smooth;
-  -webkit-overflow-scrolling:touch;
-  scroll-snap-type:x mandatory;
-  outline: none;
-}
-
-/* hide native scrollbar but keep scrolling */
-.projects-track::-webkit-scrollbar { height:8px; }
-.projects-track::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 999px; }
-
-/* card */
-.proj-card {
-  flex: 0 0 340px;
-  scroll-snap-align:center;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:16px;
-  padding:12px;
-  transition: transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s;
-  transform: translateY(6px);
-  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
-  min-height: 220px;
-  display:flex;
-  align-items:stretch;
-}
-
-/* inner layout */
-.proj-card-inner { display:flex; flex-direction:column; gap:12px; width:100%; }
-.proj-thumb { height:120px; border-radius:12px; background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow: inset 0 -6px 24px rgba(0,0,0,0.45); }
-
-/* meta */
-.proj-meta h3 { margin:0; font-size:1.1rem; color: #ff8a8a; letter-spacing:0.6px; }
-.proj-meta p { margin:8px 0 0 0; color: rgba(230,244,255,0.8); font-size:0.95rem; line-height:1.4; min-height:44px; }
-
-/* button */
-.proj-actions { margin-top:auto; display:flex; gap:8px; justify-content:flex-start; }
-.proj-btn {
-  display:inline-block; padding:8px 14px; border-radius:999px; font-weight:700; text-decoration:none;
-  background: linear-gradient(90deg,#ff0048,#ff7a5c); color:#071226; box-shadow: 0 8px 30px rgba(255,0,72,0.14);
-  transition: transform .22s, box-shadow .22s;
-}
-.proj-btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 18px 40px rgba(255,0,72,0.22); }
-
-/* hover lift + color ring based on data-color attribute (subtle) */
-.proj-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 18px 60px rgba(0,0,0,0.6); }
-
-/* color variants (tint the thumb and accent) */
-.proj-card[data-color="cyan"] .proj-thumb { background: linear-gradient(135deg,#05212b,#003f4d); }
-.proj-card[data-color="violet"] .proj-thumb { background: linear-gradient(135deg,#2b0b2b,#3b1a4f); }
-.proj-card[data-color="orange"] .proj-thumb { background: linear-gradient(135deg,#2a160b,#4a2a0b); }
-.proj-card[data-color="pink"] .proj-thumb { background: linear-gradient(135deg,#2b0710,#4a1a2a); }
-.proj-card[data-color="blue"] .proj-thumb { background: linear-gradient(135deg,#071028,#12324a); }
-
-/* small helper note */
-.projects-note { margin-top:14px; color: rgba(230,244,255,0.6); font-size:0.9rem; }
-
-/* responsive behaviour */
-@media (max-width:900px) {
-  .projects-track { gap:12px; padding:8px 6px; }
-  .proj-card { flex:0 0 86%; min-height: 200px; }
-  .track-nav { display:none; }
-}
-/* ===== Centered savage projects (images + symmetry) ===== */
-#our-projects { padding: 88px 6vw 100px; background: linear-gradient(180deg,#060913,#071225); color: #e6f4ff; }
-#our-projects .panel-inner.projects-center { max-width: 1200px; margin-left: auto; margin-right: auto; text-align: center; padding: 0 6px; }
-#our-projects .projects-title { font-family: 'Orbitron',sans-serif; font-size: clamp(28px,4vw,38px); color: #ff0066; text-shadow: 0 0 10px rgba(255,0,102,0.15); margin-bottom: 6px; }
-#our-projects .projects-sub { color: rgba(230,244,255,0.75); margin-bottom: 26px; max-width: 920px; margin-left:auto; margin-right:auto; }
-
-/* container + nav */
-.projects-track-wrap { display:flex; align-items:center; justify-content:center; gap:18px; position:relative; max-width:1200px; margin: 0 auto; }
-.track-nav { width:44px; height:44px; border-radius:10px; border:0; cursor:pointer; background: linear-gradient(90deg,#ff0048,#00ff88); color:#071226; font-size:22px; display:flex; align-items:center; justify-content:center; box-shadow:0 14px 40px rgba(0,0,0,0.6); transition: transform .18s; }
-.track-nav:active { transform: scale(.96); }
-.track-nav[disabled] { opacity:.35; pointer-events:none; }
-
-/* track */
-.projects-track {
-  display:flex;
-  gap:20px;
-  overflow-x:auto;
-  padding:10px 6px;
-  scroll-behavior:smooth;
-  -webkit-overflow-scrolling:touch;
-  scroll-snap-type:x mandatory;
-  width: calc(100% - 120px);
-  border-radius:12px;
-  outline:none;
-}
-
-/* cards */
-.proj-card {
-  flex: 0 0 320px;
-  scroll-snap-align:center;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:16px;
-  padding:14px;
-  transition: transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s;
-  transform: translateY(6px);
-  box-shadow: 0 12px 30px rgba(1,6,18,0.65);
-  min-height: 260px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-
-/* inner */
-.proj-card-inner { display:flex; flex-direction:column; gap:12px; height:100%; }
-.proj-thumb { height:140px; border-radius:12px; background-size:cover; background-position:center; box-shadow: inset 0 -6px 24px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.03); }
-
-/* meta */
-.proj-meta h3 { margin:0; font-size:1.15rem; color:#ff7a8a; letter-spacing:0.4px; font-weight:800; text-shadow: 0 2px 12px rgba(255,0,72,0.06); }
-.proj-meta p { margin:8px 0 0 0; color: rgba(230,244,255,0.85); font-size:0.95rem; line-height:1.38; min-height:48px; }
-
-/* buttons (savage gradient) */
-.proj-actions { margin-top:12px; display:flex; gap:8px; justify-content:flex-start; }
-.proj-btn {
-  display:inline-block; padding:10px 16px; border-radius:999px; font-weight:800; text-decoration:none;
-  background: linear-gradient(90deg,#ff0048,#ff7a5c); color:#071226; box-shadow: 0 8px 30px rgba(255,0,72,0.14);
-  transition: transform .22s, box-shadow .22s, filter .22s;
-}
-.proj-btn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 20px 50px rgba(255,0,72,0.22); filter:brightness(1.03); }
-
-/* hover lift */
-.proj-card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 22px 80px rgba(0,0,0,0.65); }
-
-/* thumb tints by data-color */
-.proj-card[data-color="cyan"] .proj-thumb { box-shadow: inset 0 -8px 40px rgba(0,255,200,0.06); }
-.proj-card[data-color="violet"] .proj-thumb { box-shadow: inset 0 -8px 40px rgba(200,100,255,0.06); }
-.proj-card[data-color="orange"] .proj-thumb { box-shadow: inset 0 -8px 40px rgba(255,150,60,0.06); }
-.proj-card[data-color="pink"] .proj-thumb { box-shadow: inset 0 -8px 40px rgba(255,80,150,0.06); }
-.proj-card[data-color="blue"] .proj-thumb { box-shadow: inset 0 -8px 40px rgba(0,120,255,0.06); }
-
-/* small note */
-.projects-note { margin-top:16px; color: rgba(230,244,255,0.6); font-size:0.92rem; }
-
-/* responsive */
-@media (max-width:1000px) {
-  .projects-track { width: calc(100% - 56px); gap:14px; }
-  .proj-card { flex: 0 0 78%; min-height:200px; }
-  .track-nav { display:none; }
-  #our-projects { padding: 56px 5vw; }
-}
-
-/* accessibility focus */
-.projects-track:focus { box-shadow: 0 0 0 4px rgba(0,255,170,0.06) inset; }
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-  justify-items: center;
-  width: 90%;
-  max-width: 1200px;
-  margin-inline: auto;
-}
-
-.project-card {
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
-  text-decoration: none;
-  color: #fff;
-  aspect-ratio: 4 / 3;
-  cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.project-card img {
+.projects-carousel {
+  /* center the carousel within the page content */
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-  filter: brightness(0.8);
-}
-
-.project-card .project-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 1.2rem;
-  background: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0));
-  transform: translateY(20px);
-  opacity: 0;
-  transition: all 0.5s ease;
-}
-
-.project-card h3 {
-  margin-bottom: 0.4rem;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.2rem;
-}
-
-.project-card p {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-/* Neon hover colors */
-.project-card[data-color="neon-blue"]:hover {
-  box-shadow: 0 0 25px #00eaff;
-}
-.project-card[data-color="neon-pink"]:hover {
-  box-shadow: 0 0 25px #ff6bf7;
-}
-.project-card[data-color="neon-green"]:hover {
-  box-shadow: 0 0 25px #39ff14;
-}
-.project-card[data-color="neon-orange"]:hover {
-  box-shadow: 0 0 25px #ff9933;
-}
-.project-card[data-color="neon-purple"]:hover {
-  box-shadow: 0 0 25px #a855f7;
-}
-
-/* Hover animation */
-.project-card:hover img {
-  transform: scale(1.1);
-  filter: brightness(1);
-}
-.project-card:hover .project-overlay {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .project-card {
-    aspect-ratio: 1 / 1;
-  }
-  .project-card h3 {
-    font-size: 1rem;
-  }
-}
-.projects-section {
-  text-align: center;
-  padding: 100px 5%;
-  background: transparent;
-  color: #fff;
-}
-
-.projects-title {
-  font-size: 2.5rem;
-  background: linear-gradient(90deg, #ff00c3, #00e1ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.projects-tagline {
-  color: #bbb;
-  margin-bottom: 50px;
-  font-size: 1.1rem;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  justify-items: center;
-}
-
-.project-card {
-  background: rgba(15, 10, 25, 0.9);
-  border-radius: 20px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 16px; /* optional gutter so cards don't touch edges */
   overflow: hidden;
-  box-shadow: 0 0 25px rgba(255, 0, 200, 0.1);
-  max-width: 340px;
-  transition: all 0.4s ease;
   position: relative;
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
-}
-
-.project-card img {
+/* Ensure the track is the clipping viewport and fills the carousel */
+.carousel-track {
+  display: block;
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  filter: brightness(0.8);
-  transition: 0.4s ease;
-}
-
-.project-card:hover img {
-  filter: brightness(1) blur(2px);
-  transform: scale(1.05);
-}
-
-.project-info {
-  padding: 20px;
-}
-
-.project-info h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-  background: linear-gradient(90deg, #00fff0, #ff00b8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.project-info p {
-  color: #aaa;
-  font-size: 0.95rem;
-  margin-bottom: 20px;
-  min-height: 60px;
-}
-
-.project-btn {
-  background: linear-gradient(90deg, #ff00c8, #00eaff);
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 22px;
-  border-radius: 25px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.project-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
-}
-/* Vision Section */
-#vision {
-  padding: 5rem 2rem;
-  background: radial-gradient(circle at top, #080808, #000);
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-}
-
-.vision-title {
-  font-size: 2.3rem;
-  font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, #ff00cc, #00ffcc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.vision-sub {
-  font-size: 1.1rem;
-  color: #aaa;
-  margin-bottom: 2rem;
-}
-
-.vision-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.vision-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2rem;
-  width: 90%;
-  max-width: 550px;
-  text-align: left;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
-}
-
-.vision-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 30px rgba(255, 0, 200, 0.2);
-}
-
-.vision-card h3 {
-  font-size: 1.4rem;
-  color: #00ffcc;
-  margin-bottom: 1rem;
-}
-
-.vision-card p {
-  color: #ccc;
-  line-height: 1.6;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .vision-card {
-    text-align: center;
-  }
-  .vision-content {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-/* remove top blank space */
-body, html {
-  margin: 0;
   padding: 0;
-  overflow-x: hidden;
-}
-
-/* fix nav positioning */
-nav {
-  margin-top: 0;
-  padding-top: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-/* green nav links */
-nav a {
-  color: #00ff99;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #00ffaa;
-}
-
-/* CONTACT US BUTTON — Neon Green */
-.contact-btn {
-  background-color: #00ff99;         /* solid neon green */
-  color: #000;                       /* dark text for contrast */
-  font-weight: 600;
-  border-radius: 25px;
-  padding: 10px 22px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 0 15px #00ff99;      /* glowing edge */
-  transition: all 0.3s ease;
-}
-
-.contact-btn:hover {
-  background-color: #00ffaa;         /* lighter green on hover */
-  box-shadow: 0 0 25px #00ffaa;
-  transform: scale(1.05);            /* slight lift effect */
-}
-.contact-btn {
-  text-shadow: 0 0 5px #003300;
-}
-
-
-
-#our-projects, .projects-section {
+  margin: 0 auto;
+  overflow: hidden;
   position: relative;
-  z-index: 10;
-  margin-top: 100px; /* push below hero section */
-  padding-top: 50px;
+  box-sizing: border-box;
 }
-#our-projects, .projects-section {
-  color: #fff; /* or #00ff99 for consistency */
-  visibility: visible;
-  opacity: 1;
+
+/* keep mover behavior unchanged */
+.carousel-mover {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+  will-change: transform;
+  transition: transform 0s linear;
+  flex-wrap: nowrap;
 }
-.projects-track-wrap {
-  min-height: 400px;
+
+/* ===== Overrides: make horizontal menu and header Contact button solid green ===== */
+/* Use specific selectors and !important to override earlier gradient rules */
+
+.nav-list .nav-item,
+.nav-links li a,
+#navList .nav-item {
+	/* solid green text for nav items */
+	color: #00cc66 !important;
+	/* remove any clipped gradient text */
+	background: none !important;
+	-webkit-background-clip: initial !important;
+	-webkit-text-fill-color: initial !important;
+	text-shadow: none !important;
+	transition: color .18s ease, transform .18s ease;
 }
-section {
-  overflow: visible !important;
+
+/* hover / focus state */
+.nav-list .nav-item:hover,
+.nav-links li a:hover,
+#navList .nav-item:hover,
+.nav-list .nav-item:focus,
+.nav-links li a:focus {
+	color: #00e07a !important;
+	transform: translateY(-2px) scale(1.03);
+	text-shadow: 0 0 8px rgba(0,224,122,0.18) !important;
 }
-section {
-  overflow: visible !important;
+
+/* active/selected state */
+.nav-list .nav-item.active,
+.nav-links a.active,
+#navList .nav-item.active {
+	color: #00ff99 !important;
+	text-shadow: 0 0 12px rgba(0,224,122,0.18) !important;
 }
+
+/* Header Contact button — solid green */
+.btn.contact-top,
+#contactTop {
+	background: #00cc66 !important;
+	color: #ffffff !important;
+	border: none !important;
+	box-shadow: 0 8px 24px rgba(0,204,102,0.08);
+	transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+/* hover for header Contact */
+.btn.contact-top:hover,
+#contactTop:hover {
+	background: #00e07a !important;
+	transform: scale(1.06);
+	box-shadow: 0 12px 34px rgba(0,224,122,0.18);
+}
+
+/* utility .contact-btn if used elsewhere */
+.contact-btn {
+	background: #00cc66 !important;
+	color: #fff !important;
+	border: none !important;
+}
+.contact-btn:hover { background: #00e07a !important; transform: translateY(-2px); }
+
+/* Ensure no leftover animated gradient applies to nav items */
+.nav-item {
+	animation: none !important;
+}
+
+/* ...existing code... */
