@@ -1115,3 +1115,26 @@ nav a:hover {
 .contact-btn {
   text-shadow: 0 0 5px #003300;
 }
+
+
+
+#our-projects, .projects-section {
+  position: relative;
+  z-index: 10;
+  margin-top: 100px; /* push below hero section */
+  padding-top: 50px;
+}
+#our-projects, .projects-section {
+  color: #fff; /* or #00ff99 for consistency */
+  visibility: visible;
+  opacity: 1;
+}
+.projects-track-wrap {
+  min-height: 400px;
+}
+section {
+  overflow: visible !important;
+}
+section {
+  overflow: visible !important;
+}
